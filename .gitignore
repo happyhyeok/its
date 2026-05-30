@@ -6,7 +6,7 @@ preview_*.png
 preview_*.jpg
 *_contact_sheet.jpg
 page1_edge.png
-assets/opening/scene1_mission_popup.png
+**/assets/opening/scene1_mission_popup.png
 
 # Source/reference files not needed for GitHub Pages
 *.pdf

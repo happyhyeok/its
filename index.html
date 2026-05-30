@@ -3,157 +3,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>1차시 시뮬레이션 - 버스 안내 탐정</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <title>ITS 시뮬레이션</title>
+    <link rel="stylesheet" href="./site.css" />
   </head>
   <body>
-    <main class="app" aria-live="polite">
-      <section class="scene" aria-label="강릉역 버스 도착 안내 시뮬레이션">
-        <section class="intro-scene" id="introScene" aria-label="장면 1 견학 출발 오프닝" data-cut="0">
-          <img
-            class="opening-bg"
-            src="./assets/period1_bg_gangneung_station_busstop_16x9.png"
-            alt="강릉역 앞 버스정류장"
-          />
+    <main class="hub">
+      <section class="hero" aria-label="ITS 시뮬레이션 차시 선택">
+        <img class="hero-bg" src="./lesson1/assets/period1_bg_gangneung_station_busstop_16x9.png" alt="" />
+        <div class="hero-overlay"></div>
 
-          <div class="opening-top">
-            <div>
-              <p class="kicker">장면 1</p>
-              <h1>견학 출발 이야기</h1>
-            </div>
-            <button class="plain-button skip-button" type="button" id="skipOpening">바로 미션</button>
-          </div>
+        <div class="hub-shell">
+          <header class="hub-header">
+            <p>ITS 체험 교안</p>
+            <h1>ITS 시뮬레이션</h1>
+            <span>버스 위치 정보가 관제센터를 거쳐 도착 안내로 바뀌는 과정을 차시별로 체험합니다.</span>
+          </header>
 
-          <div class="opening-stage" aria-label="견학 출발 애니메이션">
-            <div class="opening-label station">강릉역</div>
-            <div class="opening-label stop">버스 정류장</div>
+          <section class="lesson-grid" aria-label="차시 목록">
+            <a class="lesson-card active" href="./lesson1/">
+              <span>1차시</span>
+              <strong>버스 안내 탐정</strong>
+              <p>버스 위치 정보, 관제센터, 정류장 안내판 흐름을 미션으로 확인합니다.</p>
+              <em>시작하기</em>
+            </a>
 
-            <div class="opening-students" aria-hidden="true">
-              <figure class="student minjun">
-                <img src="./assets/opening/scene1_student_boy_idle.png" alt="" />
-                <figcaption>민준</figcaption>
-              </figure>
-              <figure class="student seoyeon">
-                <img src="./assets/opening/scene1_student_girl_idle.png" alt="" />
-                <figcaption>서연</figcaption>
-              </figure>
-              <figure class="student jihun">
-                <img src="./assets/opening/scene1_student_boy_thinking.png" alt="" />
-                <figcaption>지훈</figcaption>
-              </figure>
-            </div>
+            <article class="lesson-card locked">
+              <span>2차시</span>
+              <strong>준비 중</strong>
+              <p>다음 시뮬레이션을 추가할 수 있는 자리입니다.</p>
+              <em>Coming Soon</em>
+            </article>
 
-            <div class="question-cloud">
-              <span>버스는 어디 있지?</span>
-              <span>언제 도착하지?</span>
-              <span>잘못 타면 어떡하지?</span>
-            </div>
+            <article class="lesson-card locked">
+              <span>3차시</span>
+              <strong>준비 중</strong>
+              <p>차시별 폴더를 추가하면 이 메뉴에서 연결합니다.</p>
+              <em>Coming Soon</em>
+            </article>
 
-            <div class="opening-helper" aria-hidden="true">
-              <img src="./assets/common_character_traffic_helper_default.svg" alt="" />
-            </div>
-
-            <div class="its-flow" aria-hidden="true">
-              <div class="flow-node bus-node">
-                <img src="./assets/opening/scene1_mini_bus_blue.png" alt="" />
-                <span>버스</span>
-              </div>
-              <div class="flow-line first"></div>
-              <img class="signal-wave wave-one" src="./assets/opening/scene1_signal_wave.png" alt="" />
-              <div class="flow-node center-node">
-                <img src="./assets/opening/scene1_control_center_icon.png" alt="" />
-                <span>관제센터</span>
-              </div>
-              <div class="flow-line second"></div>
-              <img class="signal-wave wave-two" src="./assets/opening/scene1_signal_wave.png" alt="" />
-              <div class="flow-node board-node">
-                <img src="./assets/opening/scene1_bus_arrival_board.png" alt="" />
-                <span>도착 안내판</span>
-              </div>
-            </div>
-
-            <div class="mission-pop">
-              <img src="./assets/opening/scene1_mission_popup_cutout.png" alt="" />
-              <div>
-                <p>오늘의 미션</p>
-                <strong>대회장으로 가는 버스를 찾아라!</strong>
-                <button class="plain-button primary start-button" type="button" id="startScene">시작하기</button>
-              </div>
-              <img class="start-glow" src="./assets/opening/scene1_start_glow.png" alt="" />
-            </div>
-          </div>
-
-          <aside class="opening-dialogue" aria-live="polite">
-            <div class="opening-progress"><span id="openingProgress"></span></div>
-            <p id="openingCutLabel">컷1. 강릉역 앞</p>
-            <strong id="openingSpeaker">민준</strong>
-            <span id="openingLine">드디어 ITS 체험 견학 가는 날이다!</span>
-          </aside>
-        </section>
-
-        <section class="simulation-scene" id="simulationScene" aria-label="장면 2 시뮬레이션" hidden>
-          <img
-            class="scene-bg"
-            src="./assets/period1_bg_gangneung_station_busstop_16x9.png"
-            alt="강릉역 앞 버스정류장"
-          />
-
-          <div class="topbar">
-            <div>
-              <p class="kicker">장면 2</p>
-              <h1>강릉역 버스 도착 안내 체험하기</h1>
-            </div>
-          </div>
-
-          <div class="flow-layout">
-            <section class="guide" aria-label="교통 도우미 안내">
-              <div class="flow-step">안내인</div>
-              <div class="guide-portrait">
-                <img id="helperImage" src="./assets/common_character_traffic_helper_default.svg" alt="교통 도우미" />
-              </div>
-              <div class="speech">
-                <p id="helperLine">안녕! 나는 강릉 교통 도우미야. 버스가 어떻게 움직이는지 같이 알아보자!</p>
-              </div>
-            </section>
-
-            <section class="mission-panel" aria-label="인터랙티브 미션">
-              <div class="mission-main">
-                <div class="flow-step">인터랙티브</div>
-                <div class="mission-head">
-                  <img id="missionIcon" src="./assets/icon_objects_svg/icon_object_05.svg" alt="" />
-                  <div>
-                    <p id="missionKind">버스 위치 정보</p>
-                    <h2 id="missionTitle">내가 탈 버스를 찾아요</h2>
-                  </div>
-                </div>
-                <p id="missionCopy">대회장으로 가는 버스를 골라 주세요.</p>
-                <div id="missionBody" class="mission-body"></div>
-              </div>
-
-              <aside class="result-panel" aria-label="결과 확인">
-                <div class="result-title">
-                  <span class="flow-step">결과 확인</span>
-                  <div class="progress" aria-label="미션 진행률">
-                    <span id="missionLabel">미션 1 / 4</span>
-                    <div class="progress-track"><span id="progressBar"></span></div>
-                  </div>
-                </div>
-                <div class="monitor" aria-label="관제센터 모니터">
-                  <div class="monitor-screen">
-                    <p>관제센터</p>
-                    <strong id="monitorStatus">대기 중</strong>
-                    <span id="monitorHint">버스 신호를 기다리고 있어요.</span>
-                  </div>
-                </div>
-              </aside>
-            </section>
-          </div>
-        </section>
-
-        <div id="toast" class="toast" role="status" aria-live="assertive"></div>
+            <article class="lesson-card locked">
+              <span>4차시</span>
+              <strong>준비 중</strong>
+              <p>마지막 차시까지 같은 구조로 배포할 수 있습니다.</p>
+              <em>Coming Soon</em>
+            </article>
+          </section>
+        </div>
       </section>
     </main>
-
-    <script src="./script.js"></script>
   </body>
 </html>

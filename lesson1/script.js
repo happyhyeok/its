@@ -60,12 +60,15 @@ const helperLine = document.querySelector("#helperLine");
 const monitorStatus = document.querySelector("#monitorStatus");
 const monitorHint = document.querySelector("#monitorHint");
 const toast = document.querySelector("#toast");
+const prologueScene = document.querySelector("#prologueScene");
+const prologueLine = document.querySelector("#prologueLine");
+const prologueNext = document.querySelector("#prologueNext");
 const introScene = document.querySelector("#introScene");
 const simulationScene = document.querySelector("#simulationScene");
 const startScene = document.querySelector("#startScene");
 const skipOpening = document.querySelector("#skipOpening");
+const openingNext = document.querySelector("#openingNext");
 const openingProgress = document.querySelector("#openingProgress");
-const openingCutLabel = document.querySelector("#openingCutLabel");
 const openingSpeaker = document.querySelector("#openingSpeaker");
 const openingLine = document.querySelector("#openingLine");
 const openingStudentImages = {
@@ -76,32 +79,26 @@ const openingStudentImages = {
 
 const openingCuts = [
   {
-    label: "컷1. 강릉역 앞",
     speaker: "민준 · 서연 · 지훈",
     line: "드디어 ITS 체험 견학 가는 날이다! 그런데 대회장까지 어떤 버스를 타야 할까?",
   },
   {
-    label: "컷2. 고민",
     speaker: "친구들",
     line: "버스는 어디 있지? 언제 도착하지? 잘못 타면 어떡하지?",
   },
   {
-    label: "컷3. 교통도우미 등장",
     speaker: "교통도우미",
     line: "걱정 마! ITS가 버스 위치를 알려준단다.",
   },
   {
-    label: "컷4. 버스 위치 신호",
     speaker: "교통도우미",
     line: "버스가 움직이면 위치 신호가 관제센터로 전달돼.",
   },
   {
-    label: "컷5. 도착 안내판",
     speaker: "교통도우미",
     line: "관제센터가 정보를 확인한 뒤 정류장 안내판에 도착 시간이 표시돼!",
   },
   {
-    label: "컷6. 미션 시작",
     speaker: "오늘의 미션",
     line: "대회장으로 가는 버스를 찾아라!",
   },
@@ -109,6 +106,13 @@ const openingCuts = [
 
 let openingCut = 0;
 let openingTimer;
+let prologueStep = 0;
+
+const prologueLines = [
+  "오늘은 ITS총회대회의장으로 견학을 가려고 해요.\n다같이 강릉역에서 만나 버스를 타고 갈거예요.",
+  "약속시간이 되어, 친구들이 강릉역에 다 모였지만,\n아직 ITS총회대회의장으로 가는 버스가 오지 않았어요.",
+  "버스안내판에서 버스 번호와 남은 시간을 찾아보고,\n안전하게 버스를 기다리는 방법을 알아봐요.",
+];
 
 const studentMoods = {
   idle: {
@@ -133,6 +137,19 @@ function updateOpeningStudents(index) {
   Object.entries(mood).forEach(([name, src]) => {
     openingStudentImages[name].src = src;
   });
+}
+
+function renderPrologueStep() {
+  prologueLine.textContent = prologueLines[prologueStep];
+  prologueNext.textContent = prologueStep === prologueLines.length - 1 ? "시작하기" : "다음";
+}
+
+function startOpeningAfterPrologue() {
+  window.clearInterval(openingTimer);
+  prologueScene.hidden = true;
+  introScene.hidden = false;
+  simulationScene.hidden = true;
+  beginOpening();
 }
 
 function renderMission() {
@@ -448,32 +465,44 @@ function setOpeningCut(index) {
   const cut = openingCuts[openingCut];
   introScene.dataset.cut = String(openingCut);
   updateOpeningStudents(openingCut);
-  openingCutLabel.textContent = cut.label;
   openingSpeaker.textContent = cut.speaker;
   openingLine.textContent = cut.line;
+  openingNext.textContent = openingCut === openingCuts.length - 1 ? "미션 시작하기" : "다음";
   openingProgress.style.width = `${((openingCut + 1) / openingCuts.length) * 100}%`;
 }
 
 function beginOpening() {
   setOpeningCut(0);
-  openingTimer = window.setInterval(() => {
-    if (openingCut < openingCuts.length - 1) {
-      setOpeningCut(openingCut + 1);
-    } else {
-      window.clearInterval(openingTimer);
-    }
-  }, 5600);
+  window.clearInterval(openingTimer);
 }
 
 function enterSimulationScene() {
   window.clearInterval(openingTimer);
+  prologueScene.hidden = true;
   introScene.hidden = true;
   simulationScene.hidden = false;
   renderMission();
 }
 
+prologueNext.addEventListener("click", () => {
+  if (prologueStep < prologueLines.length - 1) {
+    prologueStep += 1;
+    renderPrologueStep();
+    return;
+  }
+
+  startOpeningAfterPrologue();
+});
 startScene.addEventListener("click", enterSimulationScene);
 skipOpening.addEventListener("click", enterSimulationScene);
+openingNext.addEventListener("click", () => {
+  if (openingCut < openingCuts.length - 1) {
+    setOpeningCut(openingCut + 1);
+    return;
+  }
 
-beginOpening();
+  enterSimulationScene();
+});
+
+renderPrologueStep();
 renderMission();

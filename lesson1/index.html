@@ -9,7 +9,28 @@
   <body>
     <main class="app" aria-live="polite">
       <section class="scene" aria-label="강릉역 버스 도착 안내 시뮬레이션">
-        <section class="intro-scene" id="introScene" aria-label="장면 1 견학 출발 오프닝" data-cut="0">
+        <section class="prologue-scene" id="prologueScene" aria-label="도입부 이야기">
+          <img
+            class="prologue-bg"
+            src="./assets/period1_bg_gangneung_station_busstop_16x9.png"
+            alt="강릉역 앞 버스정류장"
+          />
+
+          <div class="prologue-heading">
+            <p class="kicker">도입부</p>
+            <h1>ITS총회대회의장 견학을 떠나요</h1>
+          </div>
+
+          <div class="prologue-card" aria-live="polite">
+            <p id="prologueLine"></p>
+          </div>
+
+          <button class="plain-button primary prologue-next-button" type="button" id="prologueNext">
+            다음
+          </button>
+        </section>
+
+        <section class="intro-scene" id="introScene" aria-label="견학 출발 오프닝" data-cut="0" hidden>
           <img
             class="opening-bg"
             src="./assets/period1_bg_gangneung_station_busstop_16x9.png"
@@ -18,7 +39,6 @@
 
           <div class="opening-top">
             <div>
-              <p class="kicker">장면 1</p>
               <h1>견학 출발 이야기</h1>
             </div>
             <button class="plain-button skip-button" type="button" id="skipOpening">바로 미션</button>
@@ -85,13 +105,13 @@
 
           <aside class="opening-dialogue" aria-live="polite">
             <div class="opening-progress"><span id="openingProgress"></span></div>
-            <p id="openingCutLabel">컷1. 강릉역 앞</p>
             <strong id="openingSpeaker">민준</strong>
             <span id="openingLine">드디어 ITS 체험 견학 가는 날이다!</span>
+            <button class="plain-button primary opening-next-button" type="button" id="openingNext">다음</button>
           </aside>
         </section>
 
-        <section class="simulation-scene" id="simulationScene" aria-label="장면 2 시뮬레이션" hidden>
+        <section class="simulation-scene" id="simulationScene" aria-label="버스 도착 안내 시뮬레이션" hidden>
           <img
             class="scene-bg"
             src="./assets/period1_bg_gangneung_station_busstop_16x9.png"
@@ -100,7 +120,6 @@
 
           <div class="topbar">
             <div>
-              <p class="kicker">장면 2</p>
               <h1>강릉역 버스 도착 안내 체험하기</h1>
             </div>
           </div>

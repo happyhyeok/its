@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3차시 VMS 경로 변경 시뮬레이션</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main class="stage-shell" aria-label="3차시 VMS 경로 변경 시뮬레이션">
+      <section class="stage" id="stage" data-scene="road" aria-live="polite">
+        <img class="scene-bg" id="sceneBg" alt="" draggable="false" />
+
+        <section class="mission-card" aria-label="현재 미션">
+          <div class="card-label">오늘의 미션</div>
+          <div class="mission-head">
+            <h1 id="missionTitle">VMS 경로 변경 체험하기</h1>
+            <span id="missionNumber">미션 1 / 6</span>
+          </div>
+          <p id="missionTask">버스를 출발시켜요</p>
+          <p id="missionGuide">버스를 출발시켜 볼까요?</p>
+        </section>
+
+        <section class="vms-unit" id="vmsUnit" aria-label="VMS 전광판">
+          <img src="./assets/lesson3/period3_vms_board_empty.png" alt="" draggable="false" />
+          <div class="vms-text" id="vmsText">
+            <span>출발 준비</span>
+          </div>
+        </section>
+
+        <img
+          class="bus"
+          id="bus"
+          src="./assets/lesson3/period3_bus_side.png"
+          alt="버스"
+          draggable="false"
+        />
+
+        <div class="road-icons" id="roadIcons" aria-label="도로 상황 아이콘"></div>
+        <div class="map-layer" id="mapLayer" aria-label="경로 선택 지도"></div>
+        <div class="activity-layer" id="activityLayer"></div>
+        <div class="controls" id="controls" aria-label="미션 버튼"></div>
+
+        <aside class="helper-bubble" id="helperBubble" aria-label="안내자 말풍선">
+          <p id="helperLine">버스를 출발시켜 볼까요?</p>
+        </aside>
+        <img
+          class="traffic-helper"
+          id="trafficHelper"
+          src="./assets/common/characters/common_character_traffic_helper_default.png"
+          alt="교통 안내자"
+          draggable="false"
+        />
+
+        <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+        <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+        <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

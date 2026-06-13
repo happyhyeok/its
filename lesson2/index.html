@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2차시 스마트 횡단보도 체험하기</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main class="stage-wrap" aria-label="2차시 스마트 횡단보도 웹 시뮬레이션">
+      <section class="stage" id="stage" aria-live="polite">
+        <img class="scene-bg" id="sceneBg" alt="" draggable="false" />
+        <div class="object-layer" id="objectLayer"></div>
+
+        <section class="mission-card" aria-label="오늘의 미션">
+          <img class="traffic-helper is-default" id="trafficHelper" alt="교통 안전 안내 도우미" draggable="false" />
+          <div class="card-label">오늘의 미션</div>
+          <div class="mission-head">
+            <h1 id="missionTitle">스마트 횡단보도 체험하기</h1>
+            <span id="missionNumber">시작</span>
+          </div>
+          <p id="missionTask">친구들이 횡단보도 앞에 서 있어요.</p>
+          <p id="missionGuide">누가 위험한 위치에 있는지 찾아볼까요?</p>
+        </section>
+
+        <section class="feedback-card" id="feedbackCard" aria-label="결과 안내" role="status">
+          <strong>결과</strong>
+          <p id="feedbackText">시작하기를 눌러 체험을 시작해요.</p>
+        </section>
+
+        <div class="controls" id="controls" aria-label="버튼 영역"></div>
+        <div class="asset-error" id="assetError" hidden>이미지 파일을 확인해 주세요.</div>
+      </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>

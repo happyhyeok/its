@@ -1,0 +1,16 @@
+# Local verification and preview artifacts
+desktop.ini
+*.cjs
+tools_*.py
+preview_*.png
+preview_*.jpg
+*_contact_sheet.jpg
+page1_edge.png
+**/assets/opening/scene1_mission_popup.png
+
+# Source/reference files not needed for GitHub Pages
+*.pdf
+pdf_text.txt
+pdf_pages_extracted/
+pdf_rendered/
+asset_thumbs/

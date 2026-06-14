@@ -1,0 +1,178 @@
+:root {
+  color-scheme: light;
+  --ink: #10213a;
+  --blue: #1269d3;
+  --cyan: #dff5ff;
+  --green: #27a67a;
+  --yellow: #ffd33d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family:
+    "Pretendard",
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    system-ui,
+    sans-serif;
+  background: #d9f0ff;
+}
+
+.hub {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  padding: clamp(20px, 4vw, 56px);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(232, 248, 255, 0.96), rgba(232, 248, 255, 0.76) 48%, rgba(232, 248, 255, 0.38)),
+    linear-gradient(0deg, rgba(18, 105, 211, 0.18), rgba(255, 255, 255, 0.1));
+}
+
+.hub-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, 100%);
+  display: grid;
+  gap: clamp(22px, 3vw, 36px);
+}
+
+.hub-header {
+  max-width: 680px;
+}
+
+.hub-header p,
+.lesson-card span {
+  margin: 0;
+  color: #0f5fb8;
+  font-weight: 900;
+}
+
+.hub-header h1 {
+  margin: 6px 0 10px;
+  font-size: clamp(38px, 7vw, 72px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.hub-header span {
+  display: block;
+  font-size: clamp(17px, 2.1vw, 23px);
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.lesson-card {
+  min-height: 250px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 22px;
+  border: 2px solid rgba(18, 105, 211, 0.22);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: 0 18px 32px rgba(4, 36, 78, 0.16);
+}
+
+.lesson-card strong {
+  font-size: clamp(22px, 2.3vw, 30px);
+  line-height: 1.18;
+}
+
+.lesson-card p {
+  margin: 0;
+  color: #536278;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.lesson-card em {
+  align-self: end;
+  justify-self: start;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.lesson-card.active {
+  border-color: rgba(18, 105, 211, 0.58);
+}
+
+.lesson-card.active em {
+  color: #ffffff;
+  background: var(--blue);
+}
+
+.lesson-card.locked {
+  opacity: 0.72;
+}
+
+.lesson-card.locked em {
+  color: #28506f;
+  background: var(--cyan);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    align-items: start;
+  }
+
+  .lesson-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding: 18px;
+  }
+
+  .hero-overlay {
+    background: rgba(232, 248, 255, 0.86);
+  }
+
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-card {
+    min-height: 190px;
+  }
+}

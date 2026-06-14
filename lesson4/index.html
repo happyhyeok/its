@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>4차시 긴급차량 우선신호 체험하기</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <main class="stage-shell" aria-label="4차시 긴급차량 우선신호 시뮬레이션">
+      <section class="stage" id="stage" data-scene="intersection" aria-live="polite">
+        <img class="scene-bg" id="sceneBg" alt="" draggable="false" />
+
+        <section class="mission-card" aria-label="현재 미션">
+          <div class="card-label" id="missionLabel">오늘의 미션</div>
+          <div class="mission-head">
+            <h1 id="missionTitle">긴급차량 우선신호 체험하기</h1>
+            <span id="missionNumber">시작</span>
+          </div>
+          <p id="missionDescription">구급차가 안전하게 지나갈 수 있도록 도와주세요!</p>
+        </section>
+
+        <div class="mission-layer" id="missionLayer" aria-label="미션 화면"></div>
+        <div class="controls" id="controls" aria-label="미션 버튼"></div>
+
+        <section class="message-box" id="messageBox" aria-label="안내 메시지" role="status">
+          <p id="feedbackText">시작하기를 눌러 체험을 시작해요.</p>
+          <button class="mission-button success" type="button" id="nextButton" hidden>다음 미션</button>
+        </section>
+
+        <aside class="helper-bubble" id="helperBubble" aria-label="교통 도우미 말풍선">
+          <p id="helperLine">사이렌 소리가 들려요. 어디에서 구급차가 오고 있는지 함께 찾아볼까요?</p>
+        </aside>
+        <img class="traffic-helper" id="trafficHelper" alt="교통 도우미" draggable="false" />
+
+        <div class="toast" id="toast" role="status" aria-live="assertive"></div>
+        <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+        <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
